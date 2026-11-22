@@ -1,6 +1,6 @@
 # Business Problem | Permasalahan Bisnis
 
-## 🇮🇩 Bahasa Indonesia
+## Bahasa Indonesia
 
 ### Latar Belakang
 Penjual UMKM di marketplace menghasilkan data transaksi yang dapat memberikan informasi penting mengenai performa bisnis. Namun, memahami pola transaksi dan mengidentifikasi potensi permasalahan bisnis dapat menjadi tantangan tanpa proses analisis data yang tepat.
@@ -20,7 +20,7 @@ Membangun AI Business Analyst menggunakan Python, Pandas, Langflow, dan Google G
 
 ---
 
-## 🇬🇧 English
+## English
 
 ### Background
 Marketplace sellers generate transaction data that can provide valuable insights into their business performance. However, understanding transaction patterns and identifying potential business issues can be challenging without proper data analysis.
