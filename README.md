@@ -1,103 +1,82 @@
-# umkm-ai-business-analyst
-AI-powered business analytics assistant for Indonesian e-commerce sellers using Python, Pandas, Langflow, and Google Gemini
+UMKM AI Business Analyst
+An end-to-end descriptive analytics project for Indonesian e-commerce transaction data, combining Python/Pandas calculations with a Langflow-based AI business analyst.
+Project objective
+Build a data-grounded assistant that helps interpret e-commerce business performance using deterministic Python calculations. The LLM is responsible for explaining the calculated results, not inventing or independently estimating KPI values.
+Business questions
+- What are the order volume, completion, and cancellation patterns?
+- How does Average Order Value (AOV) look when calculated only from completed orders?
+- Which months and business segments show different cancellation rates?
+- Which product categories appear most frequently across unique orders?
+- What additional cost and operational data is required before evaluating an independent sales channel such as a website?
+Dataset and scope
+The project uses an Indonesia e-commerce cleaned transaction dataset. The analyzed file contains 18,868 records and 19 source columns. The supplied file is already cleaned; the original raw file was not included in this milestone. Therefore, the project does not claim to independently reproduce all earlier raw-data cleaning decisions.
 
-# UMKM AI Business Analyst
+The analysis is descriptive. It does not establish causality, industry benchmarks, net profit, or website financial feasibility. HPP, marketplace fees, operating costs, and complete marketing costs are not available.
+Methodology
+1. Load and validate the supplied CSV.
+2. Check duplicate records, unique order IDs, missing values, and date consistency.
+3. Normalize order statuses for analysis.
+4. Calculate cancellation rate using cancelled unique orders divided by all unique orders.
+5. Calculate AOV using completed orders only; report mean and median.
+6. Reindex monthly results so months with no records remain explicit gaps.
+7. Analyze cancellation by payment method, province, shipping option, and cancellation reason.
+8. Split multi-category cells and count unique orders containing each category.
+9. Pass calculated metrics from the Python custom component to the Langflow prompt and LLM.
+10. Evaluate agent responses against deterministic Python outputs.
+Selected descriptive findings
+Metric	Result
+Total unique orders	18,868
+Completed orders	16,045
+Cancelled orders	2,573
+Cancellation rate	13.64%
+Completed payment total	Rp950,963,704
+AOV mean — completed orders	Rp59,268.54
+AOV median — completed orders	Rp26,896
 
-An AI-powered business analytics assistant designed to help Indonesian e-commerce sellers understand their business performance through transaction data analysis and AI-generated insights.
 
-## Project Overview
+Cancellation rate is defined as cancelled unique orders divided by all unique orders. The denominator includes all order statuses.
 
-Small and medium-sized businesses (UMKM) rely heavily on e-commerce marketplaces to sell their products. However, understanding transaction performance and identifying business improvement opportunities can be challenging.
+Monthly examples:
+- May 2025: 170 cancellations from 819 orders (20.76%).
+- November 2025: 101 cancellations from 1,131 orders (8.93%).
+- July 2025: no transaction records in the supplied dataset; cancellation rate is not applicable, not 0%.
+These values are descriptive observations, not causal explanations or industry benchmarks.
+AI agent architecture
+CSV File → UMKM Data Analyzer (Python/Pandas) → Prompt Template → Language Model → Chat Output
 
-This project combines Python-based data analytics with a Langflow and Google Gemini-powered AI workflow to transform e-commerce transaction data into actionable business insights.
-
-## Project Objectives
-
-- Analyze e-commerce transaction data.
-- Identify order performance and cancellation patterns.
-- Explore product category and regional transaction distributions.
-- Generate AI-assisted business insights and recommendations.
-- Establish a foundation for future marketplace versus independent website feasibility analysis.
-
-## Tech Stack
-
-| Technology | Purpose |
-|---|---|
-| Python | Data processing |
-| Pandas | Data cleaning and analysis |
-| Matplotlib | Data visualization |
-| Google Colab | Development environment |
-| Langflow | AI workflow orchestration |
-| Google Gemini | AI-powered business interpretation |
-
-## Dataset
-
-The project uses an Indonesian e-commerce sales dataset containing approximately 18,868 transaction records.
-
-The analysis covers:
-- Order information
-- Product categories
-- Transaction dates
-- Payment methods
-- Order status
-- Customer and regional information
-
-Dataset source: [Insert Kaggle dataset URL]
-
-## Data Analysis
-
-The analysis includes:
-- Data inspection and missing-value analysis
-- Data cleaning and preprocessing
-- Exploratory Data Analysis (EDA)
-- Business KPI calculation
-- Monthly order and cancellation analysis
-- Product category and regional analysis
-
-## AI Agent Architecture
-
-The initial Langflow workflow consists of:
-
-1. Read File: loads transaction data.
-2. UMKM Data Analyzer: processes CSV data using Python and Pandas.
-3. Prompt Template: combines analytical results with user questions.
-4. Google Gemini: interprets business performance and generates recommendations.
-5. Chat Output: delivers responses to users.
-
-## Current Capabilities
-
-- Transaction performance analysis
-- Order status analysis
-- Cancellation rate interpretation
-- Regional transaction analysis
-- Product category analysis
-- AI-generated business recommendations
-
-## Project Limitations
-
-The dataset does not provide complete financial information such as:
-- Cost of Goods Sold (COGS)
-- Actual marketplace commission fees
-- Advertising expenditure
-- Website development and maintenance costs
-- Independent customer acquisition costs
-
-Therefore, the current version does not establish actual business profitability or determine whether a seller should migrate to an independent website.
-
-## Future Development
-
-- Seller financial profile input
-- Marketplace versus website cost comparison
-- Multichannel feasibility simulation
-- Financial scenario analysis
-- More advanced AI-assisted channel strategy recommendations
-
-## Project Status
-
-**Milestone 1: Business Performance Analysis — Implemented**
-
-**Milestone 2: Channel Feasibility Analysis — Planned**
-
----
-
-Developed as a portfolio project exploring Data Analytics, AI Agents, and business decision support for Indonesian UMKM sellers.
+Python calculates the KPIs and segments. The LLM interprets the supplied calculations and must disclose unavailable information. This separation reduces reliance on LLM arithmetic.
+Agent evaluation
+Three manual tests were performed:
+- Business overview: partial pass — core KPIs matched, but one payment-zero count was misstated.
+- AOV: pass — mean, median, and completed-order filter matched.
+- Monthly trend: partial pass — highest and lowest months matched, but December 2023 was incorrectly described as a no-data month.
+See [`docs/agent_evaluation.md`](docs/agent_evaluation.md) for the questions, expected values, observed issues, verdicts, and corrective actions. The agent is not yet described as fully validated or hallucination-free.
+Repository structure
+.
+├── README.md
+├── data/
+│   └── README.md
+├── notebooks/
+│   └── UMKM_Business_Analysis_Stage1.ipynb
+├── langflow/
+│   ├── Business_Performance_Analysis_Stage1.json
+│   └── UMKMDataAnalyzer_Stage1.py
+├── outputs/
+│   └── umkm_business_summary_stage1.json
+└── docs/
+    └── agent_evaluation.md
+Do not commit private API keys, credentials, or large/raw datasets unless the dataset license and repository policy explicitly permit redistribution. Add the dataset source URL and license details to data/README.md after verifying the original Kaggle page.
+How to reproduce
+1. Install the Python packages used by the notebook (pandas, numpy, matplotlib, and nbformat for notebook editing).
+2. Place the permitted cleaned CSV in the expected data location and update DATA_PATH in the notebook if needed.
+3. Run notebooks/UMKM_Business_Analysis_Stage1.ipynb from top to bottom.
+4. Import the Langflow flow JSON or replace the custom component with langflow/UMKMDataAnalyzer_Stage1.py.
+5. Configure the model provider credentials inside Langflow; never store credentials in the exported JSON.
+6. Run the test questions in docs/agent_evaluation.md and compare answers with the Python summary.
+Limitations and next steps
+- Audit original date parsing and quantity imputation when the raw dataset is available.
+- Expand agent evaluation to at least 8–10 questions and retest the two partial-pass cases.
+- Investigate cancellation patterns by reason and segment without claiming causation.
+- Review outliers without automatically removing potentially valid bulk orders.
+- Build a one-page Power BI dashboard after the analysis definitions are stable.
+- Add SQL reproductions of selected KPIs as a complementary skill demonstration.
