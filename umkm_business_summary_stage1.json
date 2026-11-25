@@ -1,0 +1,644 @@
+{
+  "project": "UMKM AI Business Analyst",
+  "dataset": "Indonesia E-Commerce Sales (cleaned file supplied)",
+  "data_scope_note": "Analisis menggunakan file cleaned. File raw sebelum cleaning tidak tersedia untuk memverifikasi ulang imputasi dan parsing awal.",
+  "definitions": {
+    "cancellation_rate": "cancelled unique orders / all unique orders * 100; all statuses included",
+    "aov": "mean and median Total Pembayaran for Status Pesanan = Selesai only",
+    "category_metric": "unique orders containing each category after splitting multi-category cells"
+  },
+  "data_quality": {
+    "rows": 18868,
+    "columns": 25,
+    "duplicate_rows": 0,
+    "duplicate_order_id": 0,
+    "missing_values": {
+      "order_id": 0,
+      "total_qty": 0,
+      "total_weight_gr": 0,
+      "total_returned_qty": 0,
+      "Total Diskon": 0,
+      "product_categories": 0,
+      "num_product_categories": 0,
+      "Status Pesanan": 0,
+      "Alasan Pembatalan": 0,
+      "Opsi Pengiriman": 0,
+      "Metode Pembayaran": 0,
+      "Kota/Kabupaten": 0,
+      "Provinsi": 0,
+      "Ongkos Kirim Dibayar oleh Pembeli": 0,
+      "Estimasi Potongan Biaya Pengiriman": 0,
+      "Total Pembayaran": 0,
+      "Perkiraan Ongkos Kirim": 0,
+      "Waktu Pesanan Dibuat": 0,
+      "order_date": 0,
+      "order_date_parsed": 0,
+      "created_at_parsed": 0,
+      "analysis_date": 0,
+      "status_normalized": 0,
+      "qty_missing": 0,
+      "payment_method_analysis": 0
+    },
+    "date_parse_failures": 0,
+    "date_mismatch_count": 0,
+    "qty_missing_count": 0
+  },
+  "kpis": {
+    "total_orders": 18868.0,
+    "completed_orders": 16045.0,
+    "cancelled_orders": 2573.0,
+    "cancellation_rate_pct": 13.636845452618191,
+    "completed_payment_sum": 950963704.0,
+    "aov_mean_completed": 59268.53873480835,
+    "aov_median_completed": 26896.0,
+    "average_qty_valid": 2.542452830188679,
+    "median_qty_valid": 1.0,
+    "qty_missing_count": 0.0
+  },
+  "monthly": [
+    {
+      "month": "2023-12",
+      "total_orders": 444,
+      "completed_orders": 352,
+      "cancelled_orders": 92,
+      "cancellation_rate_pct": 20.72072072072072
+    },
+    {
+      "month": "2024-01",
+      "total_orders": 431,
+      "completed_orders": 367,
+      "cancelled_orders": 64,
+      "cancellation_rate_pct": 14.849187935034802
+    },
+    {
+      "month": "2024-02",
+      "total_orders": 389,
+      "completed_orders": 327,
+      "cancelled_orders": 62,
+      "cancellation_rate_pct": 15.938303341902312
+    },
+    {
+      "month": "2024-03",
+      "total_orders": 453,
+      "completed_orders": 389,
+      "cancelled_orders": 64,
+      "cancellation_rate_pct": 14.1280353200883
+    },
+    {
+      "month": "2024-04",
+      "total_orders": 492,
+      "completed_orders": 403,
+      "cancelled_orders": 89,
+      "cancellation_rate_pct": 18.089430894308943
+    },
+    {
+      "month": "2024-05",
+      "total_orders": 620,
+      "completed_orders": 525,
+      "cancelled_orders": 95,
+      "cancellation_rate_pct": 15.32258064516129
+    },
+    {
+      "month": "2024-06",
+      "total_orders": 697,
+      "completed_orders": 608,
+      "cancelled_orders": 89,
+      "cancellation_rate_pct": 12.769010043041607
+    },
+    {
+      "month": "2024-07",
+      "total_orders": 1270,
+      "completed_orders": 1114,
+      "cancelled_orders": 156,
+      "cancellation_rate_pct": 12.283464566929133
+    },
+    {
+      "month": "2024-08",
+      "total_orders": 1293,
+      "completed_orders": 1097,
+      "cancelled_orders": 196,
+      "cancellation_rate_pct": 15.158546017014697
+    },
+    {
+      "month": "2024-09",
+      "total_orders": 1123,
+      "completed_orders": 967,
+      "cancelled_orders": 156,
+      "cancellation_rate_pct": 13.891362422083706
+    },
+    {
+      "month": "2024-10",
+      "total_orders": 1217,
+      "completed_orders": 1058,
+      "cancelled_orders": 159,
+      "cancellation_rate_pct": 13.064913722267871
+    },
+    {
+      "month": "2024-11",
+      "total_orders": 1037,
+      "completed_orders": 892,
+      "cancelled_orders": 145,
+      "cancellation_rate_pct": 13.982642237222759
+    },
+    {
+      "month": "2024-12",
+      "total_orders": 0,
+      "completed_orders": 0,
+      "cancelled_orders": 0,
+      "cancellation_rate_pct": null
+    },
+    {
+      "month": "2025-01",
+      "total_orders": 1150,
+      "completed_orders": 1005,
+      "cancelled_orders": 145,
+      "cancellation_rate_pct": 12.608695652173912
+    },
+    {
+      "month": "2025-02",
+      "total_orders": 957,
+      "completed_orders": 835,
+      "cancelled_orders": 122,
+      "cancellation_rate_pct": 12.748171368861025
+    },
+    {
+      "month": "2025-03",
+      "total_orders": 628,
+      "completed_orders": 516,
+      "cancelled_orders": 112,
+      "cancellation_rate_pct": 17.8343949044586
+    },
+    {
+      "month": "2025-04",
+      "total_orders": 824,
+      "completed_orders": 678,
+      "cancelled_orders": 146,
+      "cancellation_rate_pct": 17.718446601941746
+    },
+    {
+      "month": "2025-05",
+      "total_orders": 819,
+      "completed_orders": 649,
+      "cancelled_orders": 170,
+      "cancellation_rate_pct": 20.757020757020758
+    },
+    {
+      "month": "2025-06",
+      "total_orders": 615,
+      "completed_orders": 520,
+      "cancelled_orders": 95,
+      "cancellation_rate_pct": 15.447154471544716
+    },
+    {
+      "month": "2025-07",
+      "total_orders": 0,
+      "completed_orders": 0,
+      "cancelled_orders": 0,
+      "cancellation_rate_pct": null
+    },
+    {
+      "month": "2025-08",
+      "total_orders": 942,
+      "completed_orders": 855,
+      "cancelled_orders": 87,
+      "cancellation_rate_pct": 9.235668789808917
+    },
+    {
+      "month": "2025-09",
+      "total_orders": 1131,
+      "completed_orders": 1016,
+      "cancelled_orders": 115,
+      "cancellation_rate_pct": 10.167992926613616
+    },
+    {
+      "month": "2025-10",
+      "total_orders": 1205,
+      "completed_orders": 1092,
+      "cancelled_orders": 113,
+      "cancellation_rate_pct": 9.377593360995851
+    },
+    {
+      "month": "2025-11",
+      "total_orders": 1131,
+      "completed_orders": 780,
+      "cancelled_orders": 101,
+      "cancellation_rate_pct": 8.930150309460656
+    }
+  ],
+  "cancellation_by_payment_method": [
+    {
+      "group": "Alfamart/Alfamidi/Dan+Dan",
+      "total_orders": 34,
+      "cancelled_orders": 16,
+      "cancellation_rate_pct": 47.05882352941176
+    },
+    {
+      "group": "Indomaret/i.Saku",
+      "total_orders": 38,
+      "cancelled_orders": 17,
+      "cancellation_rate_pct": 44.73684210526316
+    },
+    {
+      "group": "online payment",
+      "total_orders": 30,
+      "cancelled_orders": 7,
+      "cancellation_rate_pct": 23.333333333333332
+    },
+    {
+      "group": "Online Payment",
+      "total_orders": 2754,
+      "cancelled_orders": 516,
+      "cancellation_rate_pct": 18.736383442265794
+    },
+    {
+      "group": "SPayLater",
+      "total_orders": 1303,
+      "cancelled_orders": 200,
+      "cancellation_rate_pct": 15.349194167306216
+    },
+    {
+      "group": "SPay Later",
+      "total_orders": 33,
+      "cancelled_orders": 5,
+      "cancellation_rate_pct": 15.151515151515152
+    },
+    {
+      "group": "COD",
+      "total_orders": 103,
+      "cancelled_orders": 15,
+      "cancellation_rate_pct": 14.563106796116504
+    },
+    {
+      "group": "SeaBank Bayar Instan",
+      "total_orders": 574,
+      "cancelled_orders": 80,
+      "cancellation_rate_pct": 13.937282229965156
+    },
+    {
+      "group": "COD (Bayar di Tempat)",
+      "total_orders": 10100,
+      "cancelled_orders": 1359,
+      "cancellation_rate_pct": 13.455445544554456
+    },
+    {
+      "group": "Kartu Kredit/Debit",
+      "total_orders": 197,
+      "cancelled_orders": 23,
+      "cancellation_rate_pct": 11.6751269035533
+    },
+    {
+      "group": "Unknown",
+      "total_orders": 283,
+      "cancelled_orders": 32,
+      "cancellation_rate_pct": 11.307420494699647
+    },
+    {
+      "group": "saldo shopeepay",
+      "total_orders": 38,
+      "cancelled_orders": 4,
+      "cancellation_rate_pct": 10.526315789473683
+    },
+    {
+      "group": "Cash On Delivery",
+      "total_orders": 103,
+      "cancelled_orders": 10,
+      "cancellation_rate_pct": 9.70873786407767
+    },
+    {
+      "group": "Saldo ShopeePay",
+      "total_orders": 3209,
+      "cancelled_orders": 284,
+      "cancellation_rate_pct": 8.85010906824556
+    },
+    {
+      "group": "Mitra Shopee",
+      "total_orders": 1,
+      "cancelled_orders": 1,
+      "cancellation_rate_pct": 100.0
+    },
+    {
+      "group": "BCA OneKlik",
+      "total_orders": 3,
+      "cancelled_orders": 1,
+      "cancellation_rate_pct": 33.33333333333333
+    },
+    {
+      "group": "Pembayaran dibebaskan",
+      "total_orders": 13,
+      "cancelled_orders": 1,
+      "cancellation_rate_pct": 7.6923076923076925
+    },
+    {
+      "group": "OnlinePayment",
+      "total_orders": 27,
+      "cancelled_orders": 2,
+      "cancellation_rate_pct": 7.4074074074074066
+    },
+    {
+      "group": "ShopeePay",
+      "total_orders": 22,
+      "cancelled_orders": 0,
+      "cancellation_rate_pct": 0.0
+    },
+    {
+      "group": "Cicilan Kartu Kredit",
+      "total_orders": 3,
+      "cancelled_orders": 0,
+      "cancellation_rate_pct": 0.0
+    }
+  ],
+  "cancellation_by_province_min_n_30": [
+    {
+      "group": "SULAWESI UTARA",
+      "total_orders": 38,
+      "cancelled_orders": 13,
+      "cancellation_rate_pct": 34.21052631578947
+    },
+    {
+      "group": "SULAWESI TENGAH",
+      "total_orders": 49,
+      "cancelled_orders": 16,
+      "cancellation_rate_pct": 32.6530612244898
+    },
+    {
+      "group": "KALIMANTAN TIMUR",
+      "total_orders": 129,
+      "cancelled_orders": 37,
+      "cancellation_rate_pct": 28.68217054263566
+    },
+    {
+      "group": "NUSA TENGGARA BARAT (NTB)",
+      "total_orders": 97,
+      "cancelled_orders": 27,
+      "cancellation_rate_pct": 27.835051546391753
+    },
+    {
+      "group": "KALIMANTAN TENGAH",
+      "total_orders": 123,
+      "cancelled_orders": 31,
+      "cancellation_rate_pct": 25.203252032520325
+    },
+    {
+      "group": "KEPULAUAN RIAU",
+      "total_orders": 66,
+      "cancelled_orders": 16,
+      "cancellation_rate_pct": 24.242424242424242
+    },
+    {
+      "group": "NANGGROE ACEH DARUSSALAM (NAD)",
+      "total_orders": 119,
+      "cancelled_orders": 28,
+      "cancellation_rate_pct": 23.52941176470588
+    },
+    {
+      "group": "SULAWESI SELATAN",
+      "total_orders": 217,
+      "cancelled_orders": 48,
+      "cancellation_rate_pct": 22.119815668202765
+    },
+    {
+      "group": "GORONTALO",
+      "total_orders": 48,
+      "cancelled_orders": 10,
+      "cancellation_rate_pct": 20.833333333333336
+    },
+    {
+      "group": "KALIMANTAN SELATAN",
+      "total_orders": 131,
+      "cancelled_orders": 26,
+      "cancellation_rate_pct": 19.84732824427481
+    },
+    {
+      "group": "SUMATERA BARAT",
+      "total_orders": 256,
+      "cancelled_orders": 50,
+      "cancellation_rate_pct": 19.53125
+    },
+    {
+      "group": "BALI",
+      "total_orders": 180,
+      "cancelled_orders": 34,
+      "cancellation_rate_pct": 18.88888888888889
+    },
+    {
+      "group": "RIAU",
+      "total_orders": 300,
+      "cancelled_orders": 56,
+      "cancellation_rate_pct": 18.666666666666668
+    },
+    {
+      "group": "KALIMANTAN BARAT",
+      "total_orders": 196,
+      "cancelled_orders": 35,
+      "cancellation_rate_pct": 17.857142857142858
+    },
+    {
+      "group": "SUMATERA UTARA",
+      "total_orders": 276,
+      "cancelled_orders": 49,
+      "cancellation_rate_pct": 17.753623188405797
+    },
+    {
+      "group": "JAMBI",
+      "total_orders": 308,
+      "cancelled_orders": 52,
+      "cancellation_rate_pct": 16.883116883116884
+    },
+    {
+      "group": "BENGKULU",
+      "total_orders": 128,
+      "cancelled_orders": 21,
+      "cancellation_rate_pct": 16.40625
+    },
+    {
+      "group": "SUMATERA SELATAN",
+      "total_orders": 579,
+      "cancelled_orders": 92,
+      "cancellation_rate_pct": 15.889464594127805
+    },
+    {
+      "group": "JAWA TIMUR",
+      "total_orders": 1411,
+      "cancelled_orders": 218,
+      "cancellation_rate_pct": 15.450035435861093
+    },
+    {
+      "group": "LAMPUNG",
+      "total_orders": 441,
+      "cancelled_orders": 63,
+      "cancellation_rate_pct": 14.285714285714285
+    },
+    {
+      "group": "JAWA TENGAH",
+      "total_orders": 1310,
+      "cancelled_orders": 171,
+      "cancellation_rate_pct": 13.053435114503817
+    },
+    {
+      "group": "DKI JAKARTA",
+      "total_orders": 2667,
+      "cancelled_orders": 338,
+      "cancellation_rate_pct": 12.673415823022122
+    },
+    {
+      "group": "BANGKA BELITUNG",
+      "total_orders": 112,
+      "cancelled_orders": 14,
+      "cancellation_rate_pct": 12.5
+    },
+    {
+      "group": "BANTEN",
+      "total_orders": 3281,
+      "cancelled_orders": 389,
+      "cancellation_rate_pct": 11.85614142029869
+    },
+    {
+      "group": "JAWA BARAT",
+      "total_orders": 6078,
+      "cancelled_orders": 693,
+      "cancellation_rate_pct": 11.40177690029615
+    },
+    {
+      "group": "DI YOGYAKARTA",
+      "total_orders": 229,
+      "cancelled_orders": 24,
+      "cancellation_rate_pct": 10.480349344978166
+    }
+  ],
+  "cancellation_reasons": [
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Lainnya/ berubah pikiran",
+      "cancelled_orders": 604
+    },
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Ubah Pesanan yang Ada",
+      "cancelled_orders": 500
+    },
+    {
+      "reason": "Dibatalkan secara otomatis oleh sistem. Alasan: Pesanan belum dibayar",
+      "cancelled_orders": 403
+    },
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Need to change delivery address",
+      "cancelled_orders": 280
+    },
+    {
+      "reason": "Dibatalkan secara otomatis oleh sistem. Alasan: Pengiriman gagal",
+      "cancelled_orders": 238
+    },
+    {
+      "reason": "Dibatalkan secara otomatis oleh sistem. Alasan: Penjual gagal mengirimkan pesanan tepat waktu",
+      "cancelled_orders": 106
+    },
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Perlu mengubah pesanan",
+      "cancelled_orders": 103
+    },
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Perlu mengubah alamat pengiriman",
+      "cancelled_orders": 73
+    },
+    {
+      "reason": "Dibatalkan secara otomatis oleh sistem. Alasan: Penjual tidak mengatur pengiriman tepat waktu",
+      "cancelled_orders": 54
+    },
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Lainnya",
+      "cancelled_orders": 45
+    },
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Perlu mengubah Voucher",
+      "cancelled_orders": 31
+    },
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Proses pembayaran sulit",
+      "cancelled_orders": 30
+    },
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Penjual tidak responsif terhadap pertanyaan Pembeli",
+      "cancelled_orders": 30
+    },
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Menemukan yang lebih murah",
+      "cancelled_orders": 20
+    },
+    {
+      "reason": "Dibatalkan oleh Pembeli. Alasan: Tidak ingin membeli lagi",
+      "cancelled_orders": 20
+    },
+    {
+      "reason": "Dibatalkan secara otomatis oleh sistem. Alasan: Paket hilang di perjalanan. Kompensasi yang memenuhi syarat telah dikreditkan ke Saldo Penjual-mu.",
+      "cancelled_orders": 19
+    },
+    {
+      "reason": "Dibatalkan oleh Penjual. Alasan: Produk habis",
+      "cancelled_orders": 13
+    },
+    {
+      "reason": "Dibatalkan secara otomatis oleh sistem. Alasan: Lainnya",
+      "cancelled_orders": 4
+    }
+  ],
+  "top_categories_by_unique_orders": [
+    {
+      "category": "Celengan",
+      "orders": 5420
+    },
+    {
+      "category": "Mangkok Sambal / Saus",
+      "orders": 3562
+    },
+    {
+      "category": "Aksesoris Pintu",
+      "orders": 2571
+    },
+    {
+      "category": "Nampan / Tray",
+      "orders": 1320
+    },
+    {
+      "category": "Other",
+      "orders": 827
+    },
+    {
+      "category": "Baskom / Mangkok Besar",
+      "orders": 700
+    },
+    {
+      "category": "Keranjang",
+      "orders": 652
+    },
+    {
+      "category": "Rak / Rak Serbaguna",
+      "orders": 642
+    },
+    {
+      "category": "Seal / Baut / Roof",
+      "orders": 602
+    },
+    {
+      "category": "Lunch Box / Rantang",
+      "orders": 529
+    },
+    {
+      "category": "Tempat Nasi",
+      "orders": 438
+    },
+    {
+      "category": "Botol / Gelas / Mug",
+      "orders": 416
+    },
+    {
+      "category": "Saringan / Strainer",
+      "orders": 378
+    },
+    {
+      "category": "Peralatan Makan",
+      "orders": 336
+    },
+    {
+      "category": "Perlengkapan Packing",
+      "orders": 304
+    }
+  ]
+}
